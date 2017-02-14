@@ -21,7 +21,8 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         SQLiteDatabase sqLiteDatabase = getBaseContext().openOrCreateDatabase("sqlite-test-1.db",MODE_PRIVATE,null);
-          sqLiteDatabase.execSQL("CREATE TABLE contacts2 (name TEXT ,phone INTEGER , email TEXT)");
+        sqLiteDatabase.execSQL("DROP TABLE contacts");
+        sqLiteDatabase.execSQL("CREATE TABLE contacts (name TEXT ,phone INTEGER , email TEXT)");
         sqLiteDatabase.execSQL("insert into contacts  VALUES('yamen',0507895146,'yamenrbd@hotmail');");
         sqLiteDatabase.execSQL("insert into contacts VALUES ('magd',0500816000,'magd@hotmail');");
         Cursor query = sqLiteDatabase.rawQuery("select * from contacts",null);
