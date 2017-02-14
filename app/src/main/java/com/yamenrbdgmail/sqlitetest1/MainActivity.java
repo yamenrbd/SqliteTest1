@@ -3,11 +3,8 @@ package com.yamenrbdgmail.sqlitetest1;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -28,10 +25,12 @@ public class MainActivity extends AppCompatActivity {
         Cursor query = sqLiteDatabase.rawQuery("select * from contacts",null);
         if(query.moveToFirst()){
             //cyrcle all the record
-            String name = query.getString(0);
-            int phone = query.getInt(1);
-            String email = query.getString(2);
-           Toast.makeText(getBaseContext(),"name ="+name+ " phone ="+phone+" email ="+email,Toast.LENGTH_LONG).show();
+            do {
+                String name = query.getString(0);
+                int phone = query.getInt(1);
+                String email = query.getString(2);
+                Toast.makeText(getBaseContext(), "name =" + name + " phone =" + phone + " email =" + email, Toast.LENGTH_LONG).show();
+            }while (query.moveToNext());
         }
         else{
             Toast.makeText(getBaseContext(),"error retreving data from database",Toast.LENGTH_LONG).show();
